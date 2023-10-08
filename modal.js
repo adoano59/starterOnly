@@ -26,4 +26,45 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+//validation prénom
 
+//validation nom
+function verifNomPrenom(){
+  const regexNomPrenom = /^([a-zA-Z'àâëéèê ôùûçËÀÂÉÈÔÙÛÇ-]{1,75})$/;
+  const prenom = document.getElementById("first");
+  const nom = document.getElementById("last");
+  if (regexNomPrenom.test(prenom.value)) {
+    console.log("Prénom valide !");
+  } else {
+    console.log("Prénom invalide.");
+  }
+  if (regexNomPrenom.test(nom.value)) {
+    console.log("Nom valide !");
+  } else {
+    console.log("Nom invalide.");
+  }
+}
+
+
+//validation email
+function verifMail() {
+  const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+
+  const email = document.getElementById("email");
+  if (regexEmail.test(email.value)) {
+    console.log("Adresse e-mail valide !");
+  } else {
+    console.log("Adresse e-mail invalide.");
+  }
+
+}
+
+
+let button = document.querySelector(".btn-submit");
+button.addEventListener("click",()=>{
+  verifNomPrenom();
+  verifMail();
+}
+  
+)
