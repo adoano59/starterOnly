@@ -52,6 +52,25 @@ function verifNomPrenom(){
   }
 }
 
+//a l'entree de l'input prenom
+let inputPrenon = document.getElementById("first");
+inputPrenon.addEventListener("focusin",()=>{
+const spanRemove = document.querySelector(".erreurPrenom");
+     span =``;
+    spanRemove.innerHTML = span;}
+
+)
+//a l'entree de l'input nom
+let inputNon = document.getElementById("last");
+inputNon.addEventListener("focusin",()=>{
+const spanRemove = document.querySelector(".erreurNom");
+     span =``;
+    spanRemove.innerHTML = span;})
+
+// a la sortie des input prenom et nom
+inputPrenon.addEventListener("focusout",verifNomPrenom);
+inputNon.addEventListener("focusout",verifNomPrenom);
+
 
 //validation email
 function verifMail() {
@@ -70,6 +89,17 @@ function verifMail() {
   
 }
 
+//a l'entree de l'input email
+let inputEmail = document.getElementById("email");
+inputEmail.addEventListener("focusin",()=>{
+const spanRemove = document.querySelector(".erreurMail");
+     span =``;
+    spanRemove.innerHTML = span;})
+
+// a la sortie des input email
+inputEmail.addEventListener("focusout",verifMail);
+
+
 //validation date
 function verifDate() {
   const regexDate = /^\d{4}[-]([0-2][0-9]|(3)[0-1])[-](((0)[0-9])|((1)[0-2]))$/;
@@ -84,6 +114,18 @@ function verifDate() {
   }
   
 }
+
+//a l'entree de l'input date
+let inputDate = document.getElementById("birthdate");
+inputDate.addEventListener("focusin",()=>{
+const spanRemove = document.querySelector(".erreurDate");
+     span =``;
+    spanRemove.innerHTML = span;})
+
+// a la sortie des input date
+inputDate.addEventListener("focusout",verifDate);
+
+
 //validation nombre tournois 
 function verifNbrTournois(){
   const regexNbTournois = /([0-9]{1,2})/g;
@@ -97,6 +139,16 @@ function verifNbrTournois(){
     nbTournoisErreur.innerHTML = span;
   }
 }
+//a l'entree de l'input nombre tournois
+let inputNbTournois = document.getElementById("quantity");
+inputNbTournois.addEventListener("focusin",()=>{
+const spanRemove = document.querySelector(".erreurNbTournois");
+     span =``;
+    spanRemove.innerHTML = span;})
+
+// a la sortie des input nombre tournois
+inputNbTournois.addEventListener("focusout",verifNbrTournois);
+
 
 //validation choix tournois
 function verifChoixTournois(){
@@ -111,6 +163,10 @@ function verifChoixTournois(){
   }
   if (auMoinsUnCoche) {
     console.log("Au moins un bouton radio est coché.");
+    // si affichage erreur au premier submit diparition du message au deuxieme submit si un choix est coché
+    const choixTournoisErreur = document.querySelector(".erreurChoixTournois");
+    let span =``;
+    choixTournoisErreur.innerHTML = span;
 } else {
   const choixTournoisErreur = document.querySelector(".erreurChoixTournois");
   let span =`<span> ${erreurChoixTournois} </span>`;
@@ -125,6 +181,10 @@ function verifCodition(){
   const choice = document.getElementById("checkbox1");
   if (choice.checked==1) {
     console.log("conditions d'utilisation accépté");
+    // si affichage erreur au premier submit diparition du message au deuxieme submit si la codition est coché
+    const conditionsErreur = document.querySelector(".erreurCondition");
+    let span =``;
+    conditionsErreur.innerHTML = span;
   }else{
     const conditionsErreur = document.querySelector(".erreurCondition");
   let span =`<span> ${erreurCondition} </span>`;
