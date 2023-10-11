@@ -26,22 +26,29 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-//validation prénom
+
 
 //validation nom
 function verifNomPrenom(){
-  const regexNomPrenom = /^([a-zA-Z'àâëéèê ôùûçËÀÂÉÈÔÙÛÇ-]{1,75})$/;
+  const regexNomPrenom = /^([a-zA-Z'àâëéèê ôùûçËÀÂÉÈÔÙÛÇ-]{2,75})$/;
   const prenom = document.getElementById("first");
   const nom = document.getElementById("last");
+  const erreurPrenom = ("Veuillez entrer 2 caractères ou plus pour le champ du Prénom.");
+  const erreurNom = ("Veuillez entrer 2 caractères ou plus pour le champ du nom.");
   if (regexNomPrenom.test(prenom.value)) {
     console.log("Prénom valide !");
   } else {
-    console.log("Prénom invalide.");
+    const spanErreur = document.querySelector(".erreurPrenom");
+    let span =`<span> ${erreurPrenom} </span>`;
+    spanErreur.innerHTML = span;
   }
   if (regexNomPrenom.test(nom.value)) {
     console.log("Nom valide !");
   } else {
-    console.log("Nom invalide.");
+    const spanErreur = document.querySelector(".erreurNom");
+    let span =`<span> ${erreurNom} </span>`;
+    spanErreur.innerHTML = span;
+    
   }
 }
 
@@ -49,15 +56,80 @@ function verifNomPrenom(){
 //validation email
 function verifMail() {
   const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
-
+  const erreurMail = ("Veuillez entrer un email Valide.");
+  
+  
   const email = document.getElementById("email");
   if (regexEmail.test(email.value)) {
     console.log("Adresse e-mail valide !");
   } else {
-    console.log("Adresse e-mail invalide.");
+    const mailErreur = document.querySelector(".erreurMail");
+    let span =`<span> ${erreurMail} </span>`;
+    mailErreur.innerHTML = span;
   }
+  
+}
 
+//validation date
+function verifDate() {
+  const regexDate = /^\d{4}[-]([0-2][0-9]|(3)[0-1])[-](((0)[0-9])|((1)[0-2]))$/;
+  const erreurDate = ("Vous devez entrer votre date de naissance.");
+  const date = document.getElementById("birthdate");
+  if (regexDate.test(date.value)) {
+    console.log("Date de naissance valide !");
+  } else {
+    const dateErreur = document.querySelector(".erreurDate");
+    let span =`<span> ${erreurDate} </span>`;
+    dateErreur.innerHTML = span;
+  }
+  
+}
+//validation nombre tournois 
+function verifNbrTournois(){
+  const regexNbTournois = /([0-9]{1,2})/g;
+  const nbTournois = document.getElementById("quantity");
+  const erreurNbTournois = ("Veuillez indiquer un nombre de 0 à 99.");
+  if (regexNbTournois.test(nbTournois.value)) {
+    console.log("Nbr Tournois valide !");
+  } else {
+    const nbTournoisErreur = document.querySelector(".erreurNbTournois");
+    let span =`<span> ${erreurNbTournois} </span>`;
+    nbTournoisErreur.innerHTML = span;
+  }
+}
+
+//validation choix tournois
+function verifChoixTournois(){
+  const erreurChoixTournois=("Vous devez choisir une option.")
+  const choix = document.querySelectorAll('.checkbox-input[name="location"]');
+  let auMoinsUnCoche = false;
+  for (i=0; i<choix.length;i++){
+    if(choix[i].checked==1){
+      auMoinsUnCoche = true;
+      break;
+    }
+  }
+  if (auMoinsUnCoche) {
+    console.log("Au moins un bouton radio est coché.");
+} else {
+  const choixTournoisErreur = document.querySelector(".erreurChoixTournois");
+  let span =`<span> ${erreurChoixTournois} </span>`;
+  choixTournoisErreur.innerHTML = span;
+}
+
+}
+
+//verification conditions utilisation
+function verifCodition(){
+  const erreurCondition=("Vous devez vérifier que vous acceptez les termes et conditions.");
+  const choice = document.getElementById("checkbox1");
+  if (choice.checked==1) {
+    console.log("conditions d'utilisation accépté");
+  }else{
+    const conditionsErreur = document.querySelector(".erreurCondition");
+  let span =`<span> ${erreurCondition} </span>`;
+  conditionsErreur.innerHTML = span;
+  }
 }
 
 
@@ -65,6 +137,10 @@ let button = document.querySelector(".btn-submit");
 button.addEventListener("click",()=>{
   verifNomPrenom();
   verifMail();
+  verifDate();
+  verifNbrTournois();
+  verifChoixTournois();
+  verifCodition();
 }
-  
+
 )

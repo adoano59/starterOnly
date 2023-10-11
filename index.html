@@ -72,7 +72,8 @@
                   id="first"
                   name="first"
                   minlength="2"
-                /><br>
+                />
+                <div class="erreurPrenom"></div>
               </div>
               <div
                 class="formData">
@@ -82,7 +83,8 @@
                   type="text"
                   id="last"
                   name="last"
-                /><br>
+                />
+                <div class="erreurNom"></div>
               </div>
               <div
                 class="formData">
@@ -92,7 +94,7 @@
                   type="email"
                   id="email"
                   name="email"
-                /><br>
+                /><div class="erreurMail"></div>
               </div>
               <div
                 class="formData">
@@ -102,12 +104,19 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                /><br>
+                /><div class="erreurDate"></div>
               </div>
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input 
+                class="text-control"
+                type="number"
+                id="quantity"
+                name="quantity"
+                min="0"
+                max="99"     />
+                <div class="erreurNbTournois"></div>
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
@@ -178,6 +187,7 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <div class="erreurChoixTournois"></div>
               </div>
 
               <div
@@ -192,7 +202,8 @@
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
-                <br>
+                <div class="erreurCondition"></div>
+                
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
